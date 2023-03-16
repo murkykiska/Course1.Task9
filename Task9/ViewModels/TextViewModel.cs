@@ -20,8 +20,7 @@ namespace Task9.ViewModels
                 textModel = value;
                 OnPropertyChanged("TextModel");
             }
-        }
-        
+        }        
         private TextCommand splitTextCommand;
         public TextCommand SplitTextCommand
         {
@@ -31,6 +30,18 @@ namespace Task9.ViewModels
                     (splitTextCommand = new TextCommand(obj =>
                     {
                         textModel.SplitText();
+                    }));
+            }
+        }
+        private TextCommand reverseTextCommand;
+        public TextCommand ReverseTextCommand
+        {
+            get
+            {
+                return reverseTextCommand ??
+                    (reverseTextCommand = new TextCommand(obj =>
+                    {
+                        textModel.ReverseText();
                     }));
             }
         }

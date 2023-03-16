@@ -32,13 +32,30 @@ namespace Task9.Models
                 OnPropertyChanged("Words");
             }
         }
+        private string reversedText;
+        public string ReversedText
+        {
+            get { return reversedText; }
+            set
+            {
+                reversedText = value;
+                OnPropertyChanged("ReversedText");
+            }
+        }
         public void SplitText()
         {
             Words = Text.Trim().Split(' ').ToList();            
-        }        
+        }
+        public void ReverseText()
+        {            
+            SplitText();
+            List<string> buf = Words;
+            buf.Reverse();
+            ReversedText = string.Join(" ", buf);
+        }
         public TextModel(string text)
         {
-            this.Text = text;
+            Text = text;
             SplitText();
         }
         public event PropertyChangedEventHandler PropertyChanged;
